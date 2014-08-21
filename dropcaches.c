@@ -28,6 +28,9 @@ int main(int argc, char **argv) {
     exit(1);
   }
 
+  sync();
+  sync();
+  sync();
   error = sysctl(name, namelen, NULL, 0, newval, newlen);
   if (error) {
     fprintf(stderr,"%s: sysctl(): %s\n",
