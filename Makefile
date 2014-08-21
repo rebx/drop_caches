@@ -7,18 +7,20 @@ WARNINGS= -Wall -pedantic -Wno-implicit-function-declaration
 CPPFLAGS= $(WARNINGS) $(OPTIMIZER)
 
 INCLUDES=
+#INCLUDES= -I/usr/include/linux/
 LIBRARIES=
 
 CC_SRC = dropcaches.c
 
-TARGET = ${CC_SRC:.c=}
+#TARGET = ${CC_SRC:.c=}
+TARGET = purge
 OUTPUT = bin
 BUILDDIR = build
 
 deps depend:
 	mkdir -p $(OUTPUT)
 	mkdir -p $(BUILDDIR)
-	$(CC) $(CPPFLAGS) -o $(BUILDDIR)/$(TARGET) $(CC_SRC)
+	$(CC) $(INCLUDES) $(LIBRARIES) $(CPPFLAGS) -o $(BUILDDIR)/$(TARGET) $(CC_SRC)
 
 make: deps
 
